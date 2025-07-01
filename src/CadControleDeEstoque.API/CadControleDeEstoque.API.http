@@ -1,0 +1,6 @@
+@CadControleDeEstoque.API_HostAddress = http://localhost:5234
+
+GET {{CadControleDeEstoque.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
