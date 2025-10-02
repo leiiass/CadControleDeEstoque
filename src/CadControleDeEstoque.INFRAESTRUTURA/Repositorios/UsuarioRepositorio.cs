@@ -44,5 +44,10 @@ namespace CadControleDeEstoque.INFRAESTRUTURA.Repositorios
             _context.Usuarios.Remove(usuarioAhSerRemovido);
             _context.SaveChanges();
         }
+
+        public Usuario ObterPorEmail(string email)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Email == email);
+        }
     }
 }

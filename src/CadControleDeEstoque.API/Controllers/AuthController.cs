@@ -10,15 +10,30 @@ namespace CadControleDeEstoque.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly TokenServico _tokenServico;
-        public AuthController(TokenServico tokenServico)
+        private readonly UsuarioServico _usuarioServico;
+        public AuthController(TokenServico tokenServico, UsuarioServico usuarioServico)
         {
             _tokenServico = tokenServico;
+            _usuarioServico = usuarioServico;
         }
 
         [HttpPost]
-        public IActionResult Login([FromBody] UsuarioLogin usuario)
+        public IActionResult Login([FromBody] UsuarioLogin usuarioLogin)
         {
+            var usuario = _usuarioServico.ObterPorEmail(usuarioLogin.Email);
 
+            if(usuario == null)
+            {
+                return Unauthorized("Usuário não encontrado.");
+            }
+
+            if (!BCrypt.Net.BCrypt.Verify(usuarioLogin.Senha, usuario.Senha))
+            {
+                return Unauthorized("Senha incorreta.");
+            }
+
+            var token = _tokenServico.GerarToken(usuario);
+            return Ok(new { token });
         }
     }
 }

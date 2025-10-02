@@ -1,6 +1,7 @@
 ﻿using CadControleDeEstoque.DOMINIO.Interfaces;
 using CadControleDeEstoque.DOMINIO.Modelos;
 using CadControleDeEstoque.INFRAESTRUTURA.BancoDeDados;
+using Microsoft.EntityFrameworkCore;
 
 namespace CadControleDeEstoque.INFRAESTRUTURA.Repositorios
 {
@@ -14,12 +15,12 @@ namespace CadControleDeEstoque.INFRAESTRUTURA.Repositorios
 
         public List<Produto> ObterTodos()
         {
-            return _context.Produtos.ToList();
+            return _context.Produtos.Include(x => x.Categoria).ToList();
         }
 
         public Produto ObterPorId(int id)
         {
-            return _context.Produtos.FirstOrDefault(x => x.Id == id);
+            return _context.Produtos.Include(x => x.Categoria).FirstOrDefault(x => x.Id == id);
         }
 
         public void Criar(Produto produto)

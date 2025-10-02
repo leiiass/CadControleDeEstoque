@@ -7,6 +7,7 @@
         public string Fornecedor { get; set; }
         public int Quantidade { get; set; }
         public string CodigoDoProduto { get; set; }
+        public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
     }
 }

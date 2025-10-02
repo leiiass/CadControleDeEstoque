@@ -9,5 +9,7 @@ namespace CadControleDeEstoque.DOMINIO.Interfaces
         public void Criar(Usuario usuario);
         public void Atualizar(int id, Usuario usuario);
         public void Remover(int id);
+
+        public Usuario ObterPorEmail(string email);
     }
 }

@@ -18,8 +18,8 @@ namespace CadControleDeEstoque.API.Controllers
         [HttpGet("{id}")]
         public OkObjectResult ObterPorId(int id)
         {
-            _usuarioServico.ObterPorId(id);
-            return Ok("");
+            var usuario = _usuarioServico.ObterPorId(id);
+            return Ok(usuario);
         }
 
         [HttpPost]

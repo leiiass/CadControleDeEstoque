@@ -18,15 +18,15 @@ namespace CadControleDeEstoque.API.Controllers
         [HttpGet]
         public OkObjectResult ObterTodas()
         {
-            _categoriaServico.ObterTodas();
-            return Ok("");
+            var categorias = _categoriaServico.ObterTodas();
+            return Ok(categorias);
         }
 
         [HttpGet("{id}")]
         public OkObjectResult ObterPorId(int id)
         {
-            _categoriaServico.ObterPorId(id);
-            return Ok("");
+            var categoria = _categoriaServico.ObterPorId(id);
+            return Ok(categoria);
         }
 
         [HttpPost]

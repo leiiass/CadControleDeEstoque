@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CadControleDeEstoque.DOMINIO.Modelos;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -14,11 +15,11 @@ namespace CadControleDeEstoque.SERVICOS.Servicos
             _config = config;
         }
 
-        public string GerarToken(string usuario)
+        public string GerarToken(Usuario usuario)
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, usuario),
+                new Claim(ClaimTypes.Email, usuario.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

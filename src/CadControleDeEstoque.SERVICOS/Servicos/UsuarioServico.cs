@@ -18,6 +18,7 @@ namespace CadControleDeEstoque.SERVICOS.Servicos
 
         public void Criar(Usuario usuario)
         {
+            usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
             _usuarioRepositorio.Criar(usuario);
         }
 
@@ -30,5 +31,11 @@ namespace CadControleDeEstoque.SERVICOS.Servicos
         {
             _usuarioRepositorio.Remover(id);
         }
+
+        public Usuario ObterPorEmail(string email)
+        {
+            return _usuarioRepositorio.ObterPorEmail(email);
+        }
+
     }
 }
