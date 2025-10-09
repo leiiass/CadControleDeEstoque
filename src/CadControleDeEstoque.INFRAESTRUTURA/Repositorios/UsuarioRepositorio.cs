@@ -29,7 +29,6 @@ namespace CadControleDeEstoque.INFRAESTRUTURA.Repositorios
                 ?? throw new Exception($"Usuario com Id {id} não encontrado.");
 
             usuarioAhSerAtualizado.Nome = usuario.Nome;
-            usuarioAhSerAtualizado.Senha = usuario.Senha;
             usuarioAhSerAtualizado.Email = usuario.Email;
             usuarioAhSerAtualizado.NomeDoEstabelecimento = usuario.NomeDoEstabelecimento;
 
@@ -44,6 +43,11 @@ namespace CadControleDeEstoque.INFRAESTRUTURA.Repositorios
 
             _context.Usuarios.Remove(usuarioAhSerRemovido);
             _context.SaveChanges();
+        }
+
+        public Usuario ObterPorEmail(string email)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Email == email);
         }
     }
 }

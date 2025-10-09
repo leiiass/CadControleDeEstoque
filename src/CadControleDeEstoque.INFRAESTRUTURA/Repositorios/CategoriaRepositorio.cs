@@ -22,6 +22,10 @@ namespace CadControleDeEstoque.INFRAESTRUTURA.Repositorios
             return _context.Categorias.FirstOrDefault(x => x.Id == id);
         }
 
+        public Categoria ObterPorNome(string nome)
+        {
+            return _context.Categorias.FirstOrDefault(x => x.Nome == nome);
+        }
         public void Criar(Categoria categoria)
         {
             _context.Categorias.Add(categoria);

@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CadControleDeEstoque.INFRAESTRUTURA\CadControleDeEstoque.INFRAESTRUTURA.csproj" />
+    <ProjectReference Include="..\CadControleDeEstoque.SERVICOS\CadControleDeEstoque.SERVICOS.csproj" />
   </ItemGroup>
 
 </Project>
