@@ -36,9 +36,11 @@ namespace CadControleDeEstoque.INFRAESTRUTURA.Repositorios
 
             produtoAhSerAtualizado.Nome = produto.Nome;
             produtoAhSerAtualizado.Quantidade = produto.Quantidade;
-            produtoAhSerAtualizado.Fornecedor = produto.Fornecedor;
+            produtoAhSerAtualizado.Descricao = produto.Descricao;
             produtoAhSerAtualizado.CodigoDoProduto = produto.CodigoDoProduto;
             produtoAhSerAtualizado.Categoria = produto.Categoria;
+            produtoAhSerAtualizado.Preco = produto.Preco;
+            produtoAhSerAtualizado.EstoqueMinimo = produtoAhSerAtualizado.EstoqueMinimo;
 
             _context.Produtos.Update(produtoAhSerAtualizado);
             _context.SaveChanges();
